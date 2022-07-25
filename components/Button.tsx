@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: () => void;
@@ -9,7 +9,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export default function Button({
   onClick,
-  className = "",
+  className = '',
   children,
   style,
   ...other
