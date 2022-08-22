@@ -1,12 +1,20 @@
 import Head from 'next/head';
 import React, { useState } from 'react';
-import { Button, Gap } from '../atoms';
-import Form from '../atoms/Form';
-import Input from '../atoms/Input';
+import {
+  AuthLink,
+  Button,
+  ErrorMessage,
+  Footer,
+  Form,
+  Gap,
+  Input,
+} from '../atoms';
 
 export default function LoginAdminView() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = () => {};
 
