@@ -59,10 +59,12 @@ export default function Button({
     setRippleEffect([...rippleEffect, ripplePos]);
     setTimeout(() => {
       const temporaryRipple = [...rippleEffect];
-      temporaryRipple.pop();
+      temporaryRipple.shift();
       setRippleEffect([...temporaryRipple]);
-    }, 3000);
+    }, 2000);
   };
+
+  console.log(rippleEffect);
 
   return (
     <button
