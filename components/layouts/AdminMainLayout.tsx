@@ -1,4 +1,6 @@
 import React from 'react';
+import { Footer, Header } from '../atoms';
+import { Sidebar } from '../molecules';
 
 interface Props {
   title: string;

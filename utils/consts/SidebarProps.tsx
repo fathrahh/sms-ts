@@ -1,0 +1,116 @@
+import React from 'react';
+import {
+  BiDesktop,
+  BiCog,
+  BiKey,
+  BiUser,
+  BiPackage,
+  BiStore,
+  BiCart,
+  BiQuestionMark,
+  BiShow,
+  BiPencil,
+  BiUpload,
+} from 'react-icons/bi';
+
+type sidebarChildren = {
+  text: string;
+  href: string;
+  icon: React.ReactNode;
+  children?: sidebarChildren[];
+};
+
+interface sidebarType {
+  children: sidebarChildren[];
+}
+
+export const sidebarProps: sidebarType[] = [
+  {
+    children: [
+      {
+        text: 'dashboard',
+        href: '/admin/dashboard',
+        icon: <BiDesktop />,
+      },
+      {
+        text: 'profile',
+        href: '/admin/profile',
+        icon: <BiCog />,
+      },
+      {
+        text: 'Admin',
+        href: '/admin/manage',
+        icon: <BiKey />,
+      },
+      {
+        text: 'user',
+        href: '/admin/user',
+        icon: <BiUser />,
+      },
+    ],
+  },
+
+  // Product
+  {
+    children: [
+      {
+        text: 'product',
+        icon: <BiPackage />,
+        href: '/admin/product',
+        children: [
+          {
+            text: 'List',
+            href: '/admin/product/list',
+            icon: <BiUser />,
+          },
+          {
+            text: 'Show',
+            href: '/admin/product/show',
+            icon: <BiShow />,
+          },
+          {
+            text: 'Create',
+            href: '/admin/product/create',
+            icon: <BiPencil />,
+          },
+          {
+            text: 'Update',
+            href: '/admin/product/update',
+            icon: <BiUpload />,
+          },
+        ],
+      },
+      {
+        text: 'marketplace',
+        icon: <BiStore />,
+        href: '/admin/marketplace',
+        children: [
+          {
+            text: 'List',
+            href: '/admin/marketplace/list',
+            icon: <BiUser />,
+          },
+          {
+            text: 'Show',
+            href: '/admin/marketplace/show',
+            icon: <BiShow />,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    children: [
+      {
+        text: 'order management',
+        href: 'order',
+        icon: <BiCart />,
+      },
+      {
+        text: 'faq management',
+        href: 'faq',
+        icon: <BiQuestionMark />,
+      },
+    ],
+  },
+];
