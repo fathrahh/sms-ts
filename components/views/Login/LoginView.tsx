@@ -1,5 +1,8 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import axios from 'axios';
+
 import {
   AuthLink,
   Button,
@@ -8,15 +11,46 @@ import {
   Form,
   Gap,
   Input,
-} from '../atoms';
+} from '../../atoms';
 
-export default function LoginAdminView() {
+export default function LoginView() {
+  const { asPath } = useRouter();
+  const isAdmin = asPath.includes('admin');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = () => {};
+  const login = async (email: string, password: string) => {
+    const credentials = { email, password };
+    try {
+      // Get Token From API
+      const url = isAdmin
+        ? 'https://staging-api.toqcer.uloy.dev/v1/admin/login'
+        : 'endpointuser';
+      const response = await axios.post(url, credentials);
+      const { token, refresh_token } = response.data.data;
+      const data = {
+        token,
+        refresh_token,
+        expires: 36000,
+      };
+      // Set Cookie to httpOnly
+      // using context coming soon
+      const setCookie = await axios.post('/api/auth/admin/login', data);
+    } catch (err: any) {
+      console.error(err);
+    }
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const validate = email !== '' && password !== '';
+    if (validate) {
+      return login(email, password);
+    }
+    return setErrorMsg('Email atau Password harus diisi!');
+  };
 
   return (
     <div className="h-screen bg-primary text-white overflow-hidden flex flex-col">
@@ -65,6 +99,9 @@ export default function LoginAdminView() {
           </Form>
           <div className="flex justify-between text-sm px-2 py-3 text-muted ">
             <AuthLink href="/" title="Forgot password ?" />
+            {!asPath.includes('admin') && (
+              <AuthLink href="/register" title="Create new account" />
+            )}
           </div>
         </div>
         {/* Form End */}
