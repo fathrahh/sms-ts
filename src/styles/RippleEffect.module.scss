@@ -1,0 +1,15 @@
+@keyframes ripple {
+    to {
+        transform: scale(4) ;
+        -webkit-transform: scale(4) ;
+        -moz-transform: scale(4) ;
+        -ms-transform: scale(4) ;
+        -o-transform: scale(4) ;
+        opacity: 0;
+}
+}
+
+.ripple{
+    animation: ripple 600ms linear;
+    -webkit-animation: ripple 600ms linear;
+}

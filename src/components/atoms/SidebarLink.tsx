@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { BiChevronRight } from 'react-icons/bi';
 
-import MenuStyle from '/styles/Menu.module.scss';
+import MenuStyle from '/src/styles/Menu.module.scss';
 
 interface Props {
   text: string;
