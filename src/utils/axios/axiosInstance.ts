@@ -2,11 +2,16 @@ import axios from "axios"
 
 const baseURL = "https://staging-api.toqcer.uloy.dev"
 
-function getInstance(){
-    const axiosInstance = axios.create({
-        baseURL,
-        timeout: 60000
-    })
+export const axiosInstance = axios.create({
+    baseURL,
+    timeout: 60000
+})
+
+// function getInstance(){
+//     const axiosInstance = axios.create({
+//         baseURL,
+//         timeout: 60000
+//     })
 
     /*
     * TODO: Add Interceptors laters
@@ -16,7 +21,7 @@ function getInstance(){
     * - https://dev.to/franciscomendes10866/how-to-use-axios-interceptors-b7d
     */
 
-    return axiosInstance
-}
+//     return axiosInstance
+// }
 
-export default getInstance
+// export default getInstance
