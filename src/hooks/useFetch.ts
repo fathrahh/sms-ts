@@ -1,6 +1,7 @@
 import type { AxiosRequestHeaders } from 'axios'
 import { useState, useEffect } from 'react'
 import { axiosInstance } from '../utils/axios/axiosInstance'
+import { routes } from '../utils/axios/routes/v1'
 
 export enum HTTPMETHOD {
     get = "GET",
